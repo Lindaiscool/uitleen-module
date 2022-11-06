@@ -5,6 +5,7 @@ use App\Http\Controllers\BoekenController;
 use App\Http\Controllers\ArduinoController;
 use App\Http\Controllers\SensorenController;
 use App\Http\Controllers\UitleenController;
+use App\Http\Controllers\WelcomeController;
 
 
 /*
@@ -18,9 +19,7 @@ use App\Http\Controllers\UitleenController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::middleware([
     'auth:sanctum',
@@ -31,6 +30,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/', 'App\Http\Controllers\WelcomeController@index');
+
 
 Route::get('/arduino', 'App\Http\Controllers\ArduinoController@index');
 Route::post('store-boeken', [BoekenController::class, 'store']);
@@ -44,4 +46,32 @@ Route::post('store-sensoren', [SensorenController::class, 'store']);
 Route::get('/uitleen', 'App\Http\Controllers\uitleenController@index');
 Route::post('store-uitleen', [UitleenController::class, 'store']);
 
+Route::get('delete-uitleen/{id}', [WelcomeController::class, 'destroy']);
+
+Route::get('delete-boeken/{id}', [BoekenController::class, 'destroy']);
+
+Route::get('delete-arduino/{id}', [ArduinoController::class, 'destroy']);
+
+Route::get('delete-sensoren/{id}', [SensorenController::class, 'destroy']);
+
+Route::get('edit-uitleen/{id}', [WelcomeController::class, 'edit']);
+
+Route::put('update-uitleen/{id}', [WelcomeController::class, 'update']);
+
+Route::get('edit-sensoren/{id}', [SensorenController::class, 'edit']);
+
+Route::put('update-sensoren/{id}', [SensorenController::class, 'update']);
+
+Route::get('edit-arduino/{id}', [ArduinoController::class, 'edit']);
+
+Route::put('update-arduino/{id}', [ArduinoController::class, 'update']);
+
+Route::get('edit-boeken/{id}', [BoekenController::class, 'edit']);
+
+Route::put('update-boeken/{id}', [BoekenController::class, 'update']);
+
+
+Route::get('/404', function () {
+    return view('404');
+});
 

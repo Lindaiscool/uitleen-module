@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('boeken')->nullable();
             $table->string('arduinos')->nullable();
             $table->string('sensoren')->nullable();
+            $table->longText('opmerking')->nullable();
+            $table->string('ingeleverd')->nullable();
             $table->timestamps();
         });
     }

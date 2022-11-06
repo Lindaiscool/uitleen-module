@@ -12,8 +12,9 @@ class SensorenController extends Controller
     function index(){
         // return view('sensoren');
         
-        $sensor = DB::table('soortsensor')->select('*')->get();
-        return view('sensoren')->with('sensor',$sensor);
+        $soortsensor = DB::table('soortsensor')->select('*')->get();
+        $sensor = DB::table('sensoren')->select('*')->get();
+        return view('sensoren')->with('soortsensor',$soortsensor)->with('sensor', $sensor);
         
     }
  
@@ -30,5 +31,30 @@ class SensorenController extends Controller
  
         return redirect('sensoren')->with('status', 'Form Data Has Been Inserted');
  
+    }
+
+    public function destroy($id)
+    {
+        $sensoren = Sensoren::find($id);
+        $sensoren->delete();
+        return redirect()->back()->with('status','Deleted Successfully');
+    }
+
+    public function edit($id)
+    {
+        $sensoren = Sensoren::find($id);
+        $soortsensor = DB::table('soortsensor')->select('*')->get();
+        $sensor = DB::table('sensoren')->select('*')->get();
+        return view('edit-sensoren', compact('sensoren'))->with('soortsensor',$soortsensor)->with('sensor', $sensor);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $sensoren = Sensoren::find($id);
+        $sensoren->serienummer = $request->input('serienummer');
+        $sensoren->soort = $request->input('soort');
+        $sensoren->defect = $request->input('defect');
+        $sensoren->update();
+        return redirect()->back()->with('status','Student Updated Successfully');
     }
 }

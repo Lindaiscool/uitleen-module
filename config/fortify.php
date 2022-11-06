@@ -5,6 +5,11 @@ use Laravel\Fortify\Features;
 
 return [
 
+    'redirects' => [
+        'login' => '/',
+        'logout' => '/',
+        'register' => '/'],
+
     /*
     |--------------------------------------------------------------------------
     | Fortify Guard

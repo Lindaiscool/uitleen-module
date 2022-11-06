@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('sensoren', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('serienummer');
+            $table->char('serienummer');
             $table->string('soort');
             $table->string('defect')->nullable();
             $table->timestamps();

@@ -18,13 +18,15 @@
         <input type="text" name="type" class="type" style="width:20rem; height:2.5rem; border: 1px solid rgb(56, 56, 56); background-color:rgb(16, 16, 16); color:rgb(104, 104, 104);"><br> --}}
 
                         <br><label for="type" style="color:rgb(158, 158, 158);">Type arduino:</label><br>
-                        <select id="type" name="type" form="con"
+                        <select id="type" title="Selecteer..." name="type" form="con"
                             style="width:15rem; height:2.5rem; color:rgb(158, 158, 158); background-color:rgb(16, 16, 16); border: 1px solid rgb(56, 56, 56);">
-                            <option value="">Selecteer...</option>
                             @foreach ($arduin as $data)
                                 <option value="{{ $data->type }}">{{ $data->type }}</option>
                             @endforeach
                         </select><br>
+                        <script>
+                            $('select').selectpicker();
+                        </script>
 
                         <br><input type="checkbox" class="defect" name="defect" value="Defect">
                         <label for="defect" style="color:rgb(104, 104, 104);">Defect</label><br>

@@ -31,6 +31,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js" integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css" integrity="sha512-BMbq2It2D3J17/C7aRklzOODG1IQ3+MHw3ifzBHMBwGO/0yUqYmsStgBjI0z5EYlaDEFnvYV7gNYdD3vFLRKsA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
@@ -59,7 +67,12 @@ table.table-bordered > tbody > tr > td{
     background-color:rgb(16, 16, 16);
 }
 
-          
+.bootstrap-select .btn {
+  width:15rem; 
+  height:2.5rem; 
+  color:rgb(158, 158, 158); 
+  background-color:rgb(16, 16, 16); border: 1px solid rgb(56, 56, 56);
+} 
 
             ::placeholder {
   color: rgb(158, 158, 158);
@@ -84,6 +97,14 @@ table.table-bordered > tbody > tr > td{
   content: "";
   display: table;
   clear: both;
+}
+
+.dropdown-menu{
+background-color: rgb(16, 16, 16);
+}
+
+.filter-option{
+  
 }
 
         </style>

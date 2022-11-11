@@ -19,14 +19,16 @@
                         <br>
                         <label for="soort" style="color:rgb(158, 158, 158);">Soort sensor:</label>
                         <br>
-                        <select id="soort" name="soort" form="con"
+                        <select id="soort" name="soort" form="con" title="Selecteer..."
                             style="width:20rem; height:2.5rem; color:rgb(158, 158, 158); background-color:rgb(16, 16, 16); border: 1px solid rgb(56, 56, 56);">
-                            <option value="">Selecteer...</option>
                             @foreach ($soortsensor as $data)
-                                <option value="{{ $data->soort }}"> {{ $data->soort }}</option>
+                                <option class="soort-select" value="{{ $data->soort }}"> {{ $data->soort }}</option>
                             @endforeach
                         </select>
                         <br>
+                        <script>
+                            $('select').selectpicker();
+                        </script>
 
                         <br><input type="checkbox" class="defect" name="defect" value="Defect">
                         <label for="defect" style="color:rgb(104, 104, 104);"> &nbsp Defect</label>

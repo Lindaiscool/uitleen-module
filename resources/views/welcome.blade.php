@@ -41,7 +41,7 @@ span{
         <div class="col-sm">
 @if (!Auth::guest())
 <div style="margin-top:9rem;">
-<table id="table" class="table-lg-10 table-bordered table-sm" style="margin-top:10rem; margin-left:4rem; margin-bottom:2rem;">
+<table id="table" class="table-lg-10 table-bordered table-sm" style="margin-top:10rem; margin-left:7rem; margin-bottom:2rem;">
     <thead>
         <tr>
             <th scope="col">studentnummer</th>

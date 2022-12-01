@@ -44,7 +44,7 @@
                                 <?php if($uitleen->boeken == $data5->titel){
                                     continue;
                                 } ?>
-                                <option value="{{ $data5->titel }}">{{ $data5->titel }}</option>
+                                <option value="{{ $data5->isbn }}">{{ $data5->titel }}</option>
                                 @endforeach
                             </select><br>
                         </div>
@@ -59,7 +59,7 @@
                                 <?php if($uitleen->arduinos == $data2->type){
                                     continue;
                                 } ?>
-                                <option value="{{ $data2->type }}">{{ $data2->type }}</option>
+                                <option value="{{ $data2->serienummer }}">{{ $data2->type }}</option>
                                 @endforeach
                             </select><br>
                         </div>
@@ -74,7 +74,7 @@
                                 <?php if($uitleen->sensoren == $data3->soort){
                                     continue;
                                 } ?> 
-                                <option value="{{ $data3->soort }}">{{ $data3->soort }}</option>
+                                <option value="{{ $data3->serienummer }}">{{ $data3->soort }}</option>
                                 @endforeach
                             </select><br>
                         </div>

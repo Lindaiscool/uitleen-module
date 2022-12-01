@@ -24,25 +24,34 @@
                             <select id="boeken" title="Selecteer..." data-style="btn btn-black" name="boeken" form="con"
                                 style="width:15rem; height:2.5rem; color:rgb(158, 158, 158); background-color:rgb(16, 16, 16); border: 1px solid rgb(56, 56, 56);">
                                 @foreach ($boeken as $data1)
-                                    <option value="{{ $data1->isbn }}">{{ $data1->isbn }}</option>
+                                    <option value="{{ $data1->isbn }}">{{ $data1->titel }}</option>
                                 @endforeach
 
                             </select><br>
-
+                            @if(isset($sensoren) != null)
+                            <br><label for="arduinos" style="color:rgb(158, 158, 158);">Arduino:</label><br>
+                            <select id="arduinos" required title="Selecteer..." data-style="btn btn-black" name="arduinos" form="con"
+                                style="width:15rem; height:2.5rem; color:rgb(158, 158, 158); background-color:rgb(16, 16, 16); border: 1px solid rgb(56, 56, 56);">
+                                @foreach ($arduinos as $data2)
+                                    <option value="{{ $data2->serienummer }}">{{ $data2->type }}</option>
+                                @endforeach
+                            </select><br>
+                            @else
                             <br><label for="arduinos" style="color:rgb(158, 158, 158);">Arduino:</label><br>
                             <select id="arduinos" title="Selecteer..." data-style="btn btn-black" name="arduinos" form="con"
                                 style="width:15rem; height:2.5rem; color:rgb(158, 158, 158); background-color:rgb(16, 16, 16); border: 1px solid rgb(56, 56, 56);">
                                 @foreach ($arduinos as $data2)
-                                    <option value="{{ $data2->serienummer }}">{{ $data2->serienummer }}</option>
+                                    <option value="{{ $data2->serienummer }}">{{ $data2->type }}</option>
                                 @endforeach
                             </select><br>
-
+                            @endif
+                            
                             <br><label for="sensoren" style="color:rgb(158, 158, 158);">Sensor:</label><br>
                             <select id="sensoren" title="Selecteer..." name="sensoren" form="con" class="selectpicker"
                                 data-style="btn btn-black" multiple
                                 style="width:15rem; height:2.5rem; color:rgb(158, 158, 158); background-color:rgb(16, 16, 16); border: 1px solid rgb(56, 56, 56);">
                                 @foreach ($sensoren as $data3)
-                                    <option value="{{ $data3->serienummer }}">{{ $data3->serienummer }}</option>
+                                    <option value="{{ $data3->serienummer }}">{{ $data3->soort }}</option>
                                 @endforeach
                             </select><br>
                             <script>

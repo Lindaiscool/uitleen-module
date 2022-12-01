@@ -22,6 +22,7 @@ class WelcomeController extends Controller
         return view('/welcome')->with('uitl', $uitl);
         
     }
+        
 
     public function destroy($id)
     {
@@ -40,7 +41,7 @@ class WelcomeController extends Controller
         $uitl = DB::table('uitleen')->select('*')->get();
         return view('edit-uitleen', compact('uitleen'))->with('arduinos',$arduinos)->with('boeken',$boeken)->with('sensoren',$sensoren)->with('studenten',$studenten)->with('uitl', $uitl);
     }
-
+    
     public function update(Request $request, $id)
     {
         $uitleen = Uitleen::find($id);

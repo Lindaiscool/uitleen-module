@@ -41,7 +41,7 @@ span{
         <div class="col-sm">
 @if (!Auth::guest())
 <div style="margin-top:9rem;">
-<table id="table" class="table-lg-10 table-bordered table-sm" style="margin-top:10rem; margin-left:7rem; margin-bottom:2rem;">
+<table id="table" class="table-lg-10 table-bordered table-sm" style="margin-top:10rem; width:73rem; max-width:73rem; margin-left:7rem; margin-bottom:2rem;">
     <thead>
         <tr>
             <th scope="col">studentnummer</th>
@@ -61,9 +61,9 @@ span{
         @foreach ($uitl as $data2)
             <tr>
                 <td style="width:8rem;">{{ $data2->student }}</td>
-                <td style="max-width:7rem; word-wrap: break-word;">{{ $data2->boeken }}</td>
-                <td style="max-width:13rem; word-wrap: break-word;">{{ $data2->arduinos }}</td>
-                <td><div style="max-width:13rem; word-wrap: break-word;">{{ $data2->sensoren }}</td>
+                <td style="max-width:7rem; word-wrap: break-word;">{{ $data2->titel }}</td>
+                <td style="max-width:13rem; word-wrap: break-word;">{{ $data2->type }}</td>
+                <td><div style="max-width:13rem; word-wrap: break-word;">{{ $data2->soort }}</td>
                 <td>{{ $data2->datum }}</td>
                 <td><div style="width:10rem; word-wrap: break-word;">{{ $data2->opmerking }}</div></td>
                 <td>{{ $data2->ingeleverd }}</td> 
@@ -96,7 +96,6 @@ span{
         }
     });
 </script>
-
 
 
 

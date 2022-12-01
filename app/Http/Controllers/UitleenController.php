@@ -15,7 +15,9 @@ class UitleenController extends Controller
         // return view('uitleen');   
     $studenten= DB::table('student')->select('*')->get();
     $boeken= DB::table('boeken')->select('*')->get();
-    $sensoren= DB::table('sensoren')->select('*')->whereNull('defect')->get();
+    // $sensoren= DB::table('sensoren')->select('*')->whereNull('defect')->get();
+    $sensoren= DB::table('sensoren')->whereNull('defect')->leftjoin('uitleen', 'uitleen.sensoren', '=', 'serienummer')->whereNull('sensoren')->get();
+    // die($sensoren);
     $arduinos = DB::table('arduino')->select('*')->whereNull('defect')->get();
     $uitl = DB::table('uitleen')->select('*')->get();
         return view('uitleen')->with('arduinos',$arduinos)->with('boeken',$boeken)->with('sensoren',$sensoren)->with('studenten',$studenten)->with('uitl', $uitl);     
@@ -23,23 +25,32 @@ class UitleenController extends Controller
 
     public function store(Request $request){
         
-        // dd($request);
-        $con = new Uitleen;
-  
-        $con->student = $request->input('student');
-        $con->datum = $request->input('datum');
-        $con->boeken = $request->input('boeken');
-        $con->arduinos = $request->input('arduinos');
-        $con->sensoren = $request->input('sensoren');
-        $con->opmerking = $request->input('opmerking');
-        $con->ingeleverd = $request->input('ingeleverd');
+        //dd($request);
+        // $sensoren = $request->input('sensoren');
+        // foreach ($sensoren as $sensor) {
+        //     $con = new Uitleen;
+        //     $con->datum = $request->input('datum');
+        //     $con->student = $request->input('student');
+        //     $con->boeken = "";
+        //     $con->arduinos = "";
+        //     $con->opmerking="";
+        //     $con->ingeleverd = $request->input('ingeleverd');
+        //     $con->sensoren = $sensor;
+        //     $con->save();
+        // }
+            $con = new Uitleen;
+            $con->sensoren= $request->input('sensoren');
+            $con->student = $request->input('student');
+            $con->datum = $request->input('datum');
+            $con->boeken = $request->input('boeken');;
+            $con->arduinos = $request->input('arduinos');
+            $con->opmerking = $request->input('opmerking');
+            $con->ingeleverd = $request->input('ingeleverd');
+            $con->save();
 
- 
-        $con->save();
- 
         return redirect('uitleen')->with('status', 'Form Data Has Been Inserted');
- 
+
     }
 
 
-}
+} 

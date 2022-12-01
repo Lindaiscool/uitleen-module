@@ -14,7 +14,11 @@ class WelcomeController extends Controller
         // return view('sensoren');
         
     
-        $uitl = DB::table('uitleen')->select('*')->get();
+        $uitl = DB::table('uitleen')
+        ->leftJoin('sensoren', 'uitleen.sensoren', '=', 'sensoren.serienummer')
+        ->leftJoin('boeken', 'uitleen.boeken', '=', 'boeken.isbn')
+        ->leftJoin('arduino', 'uitleen.arduinos', '=', 'arduino.serienummer')
+        ->select('boeken.*', 'arduino.*', 'sensoren.*', 'uitleen.*', 'uitleen.id as uitleenId')->get();
         return view('/welcome')->with('uitl', $uitl);
         
     }

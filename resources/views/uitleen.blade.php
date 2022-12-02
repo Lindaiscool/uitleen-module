@@ -47,7 +47,7 @@
                             @endif
                             
                             <br><label for="sensoren" style="color:rgb(158, 158, 158);">Sensor:</label><br>
-                            <select id="sensoren" title="Selecteer..." name="sensoren" form="con" class="selectpicker"
+                            <select id="sensoren" title="Selecteer..." name="sensoren[]" form="con" class="selectpicker"
                                 data-style="btn btn-black" multiple
                                 style="width:15rem; height:2.5rem; color:rgb(158, 158, 158); background-color:rgb(16, 16, 16); border: 1px solid rgb(56, 56, 56);">
                                 @foreach ($sensoren as $data3)

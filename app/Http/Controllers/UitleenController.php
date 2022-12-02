@@ -24,22 +24,24 @@ class UitleenController extends Controller
     }
 
     public function store(Request $request){
+
+        // $sensoren = explode("," ,$request->input('sensoren'));
+        $sensoren = $request->input('sensoren');
         
-        //dd($request);
-        // $sensoren = $request->input('sensoren');
-        // foreach ($sensoren as $sensor) {
-        //     $con = new Uitleen;
-        //     $con->datum = $request->input('datum');
-        //     $con->student = $request->input('student');
-        //     $con->boeken = "";
-        //     $con->arduinos = "";
-        //     $con->opmerking="";
-        //     $con->ingeleverd = $request->input('ingeleverd');
-        //     $con->sensoren = $sensor;
-        //     $con->save();
-        // }
+        // dd($sensoren);
+        foreach ($sensoren as $sensor) {
             $con = new Uitleen;
-            $con->sensoren= $request->input('sensoren');
+            $con->datum = $request->input('datum');
+            $con->student = $request->input('student');
+            $con->boeken = "";
+            $con->arduinos = "";
+            $con->opmerking="";
+            $con->ingeleverd = $request->input('ingeleverd');
+            $con->sensoren = $sensor;
+            $con->save();
+        }
+            $con = new Uitleen;
+            $con->sensoren="";
             $con->student = $request->input('student');
             $con->datum = $request->input('datum');
             $con->boeken = $request->input('boeken');;

@@ -25,11 +25,10 @@ class UitleenController extends Controller
 
     public function store(Request $request){
 
-        // $sensoren = explode("," ,$request->input('sensoren'));
         $sensoren = $request->input('sensoren');
-        
         // dd($sensoren);
-        foreach ($sensoren as $sensor) {
+        if ($sensoren != null){ 
+            foreach ($sensoren as $sensor) {
             $con = new Uitleen;
             $con->datum = $request->input('datum');
             $con->student = $request->input('student');
@@ -40,6 +39,7 @@ class UitleenController extends Controller
             $con->sensoren = $sensor;
             $con->save();
         }
+    }
             $con = new Uitleen;
             $con->sensoren="";
             $con->student = $request->input('student');

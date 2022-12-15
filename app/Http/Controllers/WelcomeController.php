@@ -34,6 +34,7 @@ class WelcomeController extends Controller
     public function edit($id)
     {
         $uitleen = Uitleen::find($id);
+        //dd($uitleen);
         $studenten= DB::table('student')->select('*')->get();
         $boeken= DB::table('boeken')->select('*')->get();
         $sensoren= DB::table('sensoren')->select('*')->whereNull('defect')->get();

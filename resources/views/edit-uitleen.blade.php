@@ -46,10 +46,11 @@
 
 
                             @foreach ($boeken as $data5)
-                                <?php if ($uitleen->boeken == $data5->titel) {
-                                    continue;
+                            <option
+                                <?php if ($uitleen->boeken == $data5->isbn) {
+                                    echo "selected";
                                 } ?>
-                                <option value="{{ $data5->isbn }}">{{ $data5->titel }}</option>
+                                 value="{{ $data5->isbn }}">{{ $data5->titel }}</option>
                             @endforeach
                         </select><br>
                     </div>
@@ -62,10 +63,11 @@
 
 
                             @foreach ($arduinos as $data2)
-                                <?php if ($uitleen->arduinos == $data2->type) {
-                                    continue;
+                            <option
+                                <?php if ($uitleen->arduinos == $data2->serienummer) {
+                                    echo "selected";
                                 } ?>
-                                <option value="{{ $data2->serienummer }}">{{ $data2->type }}</option>
+                                 value="{{ $data2->serienummer }}">{{ $data2->type }}</option>
                             @endforeach
                         </select><br>
                     </div>
@@ -78,10 +80,11 @@
 
 
                             @foreach ($sensoren as $data3)
-                                <?php if ($uitleen->sensoren == $data3->soort) {
-                                    continue;
+                                <option
+                                <?php if ($uitleen->sensoren == $data3->serienummer) {
+                                    echo "selected";
                                 } ?>
-                                <option value="{{ $data3->serienummer }}">{{ $data3->soort }}</option>
+                                value="{{ $data3->serienummer }}">{{ $data3->soort }}</option>
                             @endforeach
                         </select><br>
                     </div>

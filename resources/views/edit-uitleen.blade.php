@@ -42,15 +42,20 @@
                         <select id="boeken" name="boeken"
                             style="width:15rem; height:2.5rem; color:rgb(158, 158, 158); background-color:rgb(16, 16, 16); border: 1px solid rgb(56, 56, 56);">
 
-                            <option value="{{ $uitleen->boeken }}">{{ $uitleen->titel }}</option>
+
 
 
                             @foreach ($boeken as $data5)
-                            <option
-                                <?php if ($uitleen->boeken == $data5->isbn) {
-                                    echo "selected";
-                                } ?>
-                                 value="{{ $data5->isbn }}">{{ $data5->titel }}</option>
+                                <option <?php if ($uitleen->boeken == $data5->isbn) {
+                                    echo 'selected';
+                                } ?> value="{{ $data5->isbn }}">{{ $data5->titel }}</option>
+                            @endforeach
+
+                            @foreach ($uitl as $data5)
+                                <option <?php if ($uitleen->boeken == $data5->isbn) {
+                                    echo 'selected';
+                                } ?> value="{{ $data5->isbn }}">{{ $data5->titel }}
+                                </option>
                             @endforeach
                         </select><br>
                     </div>
@@ -59,15 +64,20 @@
                         <select id="arduinos" name="arduinos"
                             style="width:15rem; height:2.5rem; color:rgb(158, 158, 158); background-color:rgb(16, 16, 16); border: 1px solid rgb(56, 56, 56);">
 
-                            <option value="{{ $uitleen->arduinos }}">{{ $uitleen->type }}</option>
 
 
                             @foreach ($arduinos as $data2)
-                            <option
-                                <?php if ($uitleen->arduinos == $data2->serienummer) {
-                                    echo "selected";
-                                } ?>
-                                 value="{{ $data2->serienummer }}">{{ $data2->type }}</option>
+                                <option <?php if ($uitleen->arduinos == $data2->serienummer) {
+                                    echo 'selected';
+                                } ?> value="{{ $data2->serienummer }}">{{ $data2->type }}
+                                </option>
+                            @endforeach
+
+                            @foreach ($uitl as $data2)
+                                <option <?php if ($uitleen->arduinos == $data2->arduinos) {
+                                    echo 'selected';
+                                } ?> value="{{ $data2->serienummer }}">{{ $data2->type }}
+                                </option>
                             @endforeach
                         </select><br>
                     </div>
@@ -76,15 +86,20 @@
                         <select id="sensoren" name="sensoren"
                             style="width:15rem; height:2.5rem; color:rgb(158, 158, 158); background-color:rgb(16, 16, 16); border: 1px solid rgb(56, 56, 56);">
 
-                            <option value="{{ $uitleen->sensoren }}">{{ $uitleen->sensoren }}</option>
 
 
                             @foreach ($sensoren as $data3)
-                                <option
-                                <?php if ($uitleen->sensoren == $data3->serienummer) {
-                                    echo "selected";
-                                } ?>
-                                value="{{ $data3->serienummer }}">{{ $data3->soort }}</option>
+                                <option <?php if ($uitleen->sensoren == $data3->serienummer) {
+                                    echo 'selected';
+                                } ?> value="{{ $data3->serienummer }}">{{ $data3->soort }}
+                                </option>
+                            @endforeach 
+
+                            @foreach ($uitl as $data3)
+                                <option <?php if ($uitleen->sensoren == $data3->sensoren) {
+                                    echo 'selected';
+                                } ?> value="{{ $data3->serienummer }}">{{ $data3->soort }}
+                                </option>
                             @endforeach
                         </select><br>
                     </div>

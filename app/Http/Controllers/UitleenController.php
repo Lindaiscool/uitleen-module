@@ -14,11 +14,11 @@ class UitleenController extends Controller
     function index(){
         // return view('uitleen');   
     $studenten= DB::table('student')->select('*')->get();
-    $boeken= DB::table('boeken')->select('*')->get();
+    $boeken= DB::table('boeken')->select('*')->leftjoin('uitleen', 'uitleen.boeken', '=', 'isbn')->whereNull('boeken')->get();
     // $sensoren= DB::table('sensoren')->select('*')->whereNull('defect')->get();
     $sensoren= DB::table('sensoren')->whereNull('defect')->leftjoin('uitleen', 'uitleen.sensoren', '=', 'serienummer')->whereNull('sensoren')->get();
     // die($sensoren);
-    $arduinos = DB::table('arduino')->select('*')->whereNull('defect')->get();
+    $arduinos = DB::table('arduino')->select('*')->whereNull('defect')->leftjoin('uitleen', 'uitleen.arduinos', '=', 'serienummer')->whereNull('arduinos')->get();
     $uitl = DB::table('uitleen')->select('*')->get();
         return view('uitleen')->with('arduinos',$arduinos)->with('boeken',$boeken)->with('sensoren',$sensoren)->with('studenten',$studenten)->with('uitl', $uitl);     
     }

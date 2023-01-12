@@ -36,14 +36,17 @@ class WelcomeController extends Controller
         $uitleen = Uitleen::find($id);
         //dd($uitleen);
         $studenten= DB::table('student')->select('*')->get();
-        $boeken= DB::table('boeken')->select('*')->get();
-        $sensoren= DB::table('sensoren')->select('*')->whereNull('defect')->get();
-        $arduinos = DB::table('arduino')->select('*')->whereNull('defect')->get();
-        $uitl = DB::table('uitleen')
-            ->leftJoin('boeken', 'uitleen.boeken', '=', 'boeken.titel')
-            ->leftJoin('arduino', 'uitleen.arduinos', '=', 'arduino.type')
-            ->leftJoin('sensoren', 'uitleen.sensoren', '=', 'sensoren.soort')->select('*')->get();
-
+        
+        $boeken= DB::table('boeken')->select('*')->leftjoin('uitleen', 'uitleen.boeken', '=', 'isbn')->whereNull('boeken')->get();
+        
+        $sensoren= DB::table('sensoren')->select('*')->whereNull('defect')->leftjoin('uitleen', 'uitleen.sensoren', '=', 'serienummer')->whereNull('sensoren')->get();
+        $arduinos = DB::table('arduino')->select('*')->whereNull('defect')->leftjoin('uitleen', 'uitleen.arduinos', '=', 'serienummer')->whereNull('arduinos')->get();
+        
+        $uitl = DB::table('uitleen')->select('*')->where('uitleen.id', '=', $id)
+            ->leftJoin('boeken', 'uitleen.boeken', '=', 'boeken.isbn')->select('*')
+            ->leftJoin('arduino', 'uitleen.arduinos', '=', 'arduino.serienummer')->select('*')
+            ->leftJoin('sensoren', 'uitleen.sensoren', '=', 'sensoren.serienummer')->select('*')->get();
+        // dd($uitl);
         return view('edit-uitleen', compact('uitleen'))->with('arduinos',$arduinos)->with('boeken',$boeken)->with('sensoren',$sensoren)->with('studenten',$studenten)->with('uitl', $uitl);
     }
 
